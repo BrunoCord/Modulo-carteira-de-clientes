@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="carteiraClientes.js"></script>
+</head>
+
+<body ng-app="moduloCarteiraClientes" ng-controller="inicioUsuario">
+    <md-content>
+        <md-toolbar class="md-hue-2" style="background-color:#303F9F">
+            <div class="md-toolbar-tools ">
+                <h class="md-display-1">
+                    <span>Cadastro de usuário</span>
+                </h>
+                <span flex="" class="flex"></span>
+                <button class="md-fab md-primary md-button md-ink-ripple" type="button" aria-label="Novo Funcionario" ng-click="redirect()">
+                        <span class="fa fa-list-alt" style="font-size: large; color:white" />
+                </button>
+                <md-button class="md-raised">Button</md-button>
+            </div>
+        </md-toolbar>
+    </md-content>
+<!--
+    <div ng-controller="AppCtrl">
+        <md-content>
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-button>{{title1}}</md-button>
+                <md-button md-no-ink class="md-primary">Primary (md-noink)</md-button>
+                <md-button ng-disabled="true" class="md-primary">Disabled</md-button>
+                <md-button class="md-warn">{{title4}}</md-button>
+                <div class="label">Flat</div>
+            </section>
+        </md-content>
+    </div>
+-->
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!-- Your application bootstrap 
+    <script type="text/javascript">
+        /**
+     * You must include the dependency on 'ngMaterial' 
+     */
+        angular.module('moduloCarteiraClientes', ['ngMaterial']
+        ).controller('inicioUsuario', function ($scope, $http, $location, $window) {
+
+        }).controller('AppCtrl', function ($scope) {
+            $scope.title1 = 'Button';
+            $scope.title4 = 'Warn';
+            $scope.isDisabled = true;
+
+            $scope.googleUrl = 'http://google.com';
+
+        });
+    </script>
+ -->
+</body>
+
+</html>

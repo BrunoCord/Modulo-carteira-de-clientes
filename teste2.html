@@ -1,0 +1,75 @@
+ <md-input-container>
+                            <label>Endereço residencial</label>
+                            <input ng-model="enderecoResidencial">
+                        </md-input-container>
+                        <div layout-gt-xs="row">
+                            <md-input-container>
+                                <label>Cidade</label>
+                                <input ng-model="cidade">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Estado</label>
+                                <input ng-model="estado">
+                            </md-input-container>
+                        </div>
+                        <md-input-container>
+                            <label>CEP</label>
+                            <input ng-model="cep">
+                        </md-input-container>
+                        <md-checkbox ng-model="mesmoEnd" aria-label="mesmeEnd">
+                            Endereço é o mesmo de entrega
+                        </md-checkbox>
+                        <div ng-if="mesmoEnd == false">
+                            <md-input-container>
+                                <label>Endereço de entrega</label>
+                                <input ng-model="enderecoEntrega">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Cidade</label>
+                                <input ng-model="cidade">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>Estado</label>
+                                <input ng-model="senha">
+                            </md-input-container>
+                            <md-input-container>
+                                <label>CEP</label>
+                                <input ng-model="senha">
+                            </md-input-container>
+                        </div>
+                        <div ng-if="tipoConta.includes('comercial')">
+                            <label>CNPJ</label>
+                            <input ng-model="senha">
+                        </div>
+                        <br>
+
+
+                            var data = JSON.stringify({
+      nome: $scope.prestador.nome,
+      senha: $scope.prestador.senha,
+      email: $scope.prestador.email,
+      dtNascimento: $scope.dtNascimento,
+      telefone: $scope.telefone,
+      cpf: $scope.cpf,
+      cnpj: $scope.cnpj
+    });
+
+    $http({
+      method: 'POST',
+      url: host_location + "/login",
+      headers:
+      {
+        'Content-type': 'application/json'
+      },
+      data: data
+    }).then(function (response) {
+      console.log(JSON.stringify(response.status));
+      $scope.showAlert(data);
+    });
+
+
+
+
+
+
+

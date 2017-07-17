@@ -1,0 +1,92 @@
+﻿<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="carteiraClientes.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body ng-app="moduloClientes" ng-cloak class="col-xs-12">
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">Cadastro</h2>
+            <span flex="" class="flex"></span>
+            <button class="md-fab md-primary md-button md-ink-ripple" type="button" aria-label="login">
+                <span class="fa fa-sign-in" style="font-size: large; color:white" />
+            </button>
+        </div>
+    </md-toolbar>
+    <md-content flex layout-padding>
+    </md-content>
+    <center>
+        <div class="col-xs-12" ng-controller="cadastrar" layout="row" ng-cloak class="md-inline-form" layout-align="center center">
+            <md-content layout-gt-sm="row" layout-padding>
+                <md-card>
+                    <label>Preecher os dados abaixo</label>
+                    <center>
+                        <div>
+                            <md-radio-group ng-model="tipoConta" layout="row">
+                                <md-radio-button value="pessoal">Conta pessoal</md-radio-button>
+                                <md-radio-button value="comercial"> Conta comercial </md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </center>
+                    <md-input-container>
+                        <label>Nome</label>
+                        <input ng-model="usuario.nome">
+                    </md-input-container>
+                    <div layout-gt-xs="row">
+                        <md-input-container>
+                            <label>E-mail</label>
+                            <input ng-model="usuario.email" type="email">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Senha</label>
+                            <input ng-model="senha" type="usuario.senha">
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-xs="row">
+                        <md-input-container>
+                            <label>Data de nascimento</label>
+                            <input ng-model="usuario.dtNascimento">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Telefone</label>
+                            <input ng-model="usuario.telefone">
+                        </md-input-container>
+                    </div>
+                    <div ng-if="tipoConta.includes('pessoal')">
+                        <md-input-container>
+                            <label>CPF</label>
+                            <input ng-model="usuario.cpf">
+                        </md-input-container>
+                    </div>
+                    <div ng-if="tipoConta.includes('comercial')">
+                        <md-input-container>
+                            <label>CNPJ</label>
+                            <input ng-model="usuario.cnpj">
+                        </md-input-container>
+                    </div>
+                    <md-button ng-click="cadastrar()" class="md-raised md-primary">Cadastrar</md-button>
+                </md-card>
+            </md-content>
+        </div>
+    </center>
+</body>
+
+</html>
