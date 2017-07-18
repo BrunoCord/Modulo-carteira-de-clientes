@@ -25,15 +25,13 @@ angular.module('moduloClientes', ['ngMaterial']).config(function ($mdThemingProv
       cpf: $scope.usuario.cpf,
       cnpj: $scope.usuario.cnpj
     });
-
     $http({
       method: 'POST',
-      url: 'http://localhost:3001/login',
-      data: data
-    }).then(function (response) {
-      //console.log(JSON.stringify(response.status));
-      alert('ola '+JSON.stringify(response.status));
+      url: 'http://localhost:8081/login',
+      data: data,
+      headers: { 'Content-Type': 'application/json' }
+    }).then(function (response, error) {
+      console.log(JSON.stringify(response +" "+error));
     });
   }
-
 }])

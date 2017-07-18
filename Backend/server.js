@@ -1,13 +1,16 @@
-const express = require('express')  
-var mysql = require('mysql'); 
+const express = require('express')
+var mysql = require('mysql')
 const bodyParser = require('body-parser')
-const app = express()  
-const port = 3001
+const cors = require('cors')
+const app = express()
+const port = 8081
 
-app.listen(port, (err) => {  
+app.use(cors())
+
+app.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
-  }  console.log(`server is listening on ${port}`)
+  } console.log(`server is listening on ${port}`)
 })
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,15 +22,14 @@ var con = mysql.createConnection({
   database: "HELPBOOK"
 });
 
- app.post('/login', function(req, res){
-  var teste = 2;
-  var teste2 = 3;
-  var teste3 = teste+teste2;
+app.post('/login', function (req, res) {
 
-   console.log("chegou no metodo");
-   /*
-   var user = req.body.user;
-   var senha = req.body.senha;
-   consoe.log(user+" "+senha)
-   */
- })
+  console.log("chegou no metodo");
+  var user = req.body.user;
+  console.log(user);
+  res.end("OK");
+  /*
+  var senha = req.body.senha;
+  consoe.log(user+" "+senha)
+  */
+})
