@@ -11,11 +11,13 @@
     <script type="text/javascript" src="carteiraClientes.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <script type="text/javascript" src="node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -57,29 +59,29 @@
                         </md-input-container>
                         <md-input-container>
                             <label>Senha</label>
-                            <input ng-model="senha" type="usuario.senha">
+                            <input ng-model="usuario.senha" type="password">
                         </md-input-container>
                     </div>
                     <div layout-gt-xs="row">
                         <md-input-container>
                             <label>Data de nascimento</label>
-                            <input ng-model="usuario.dtNascimento">
+                            <input ng-model="usuario.dtNascimento" ui-date-mask>
                         </md-input-container>
                         <md-input-container>
                             <label>Telefone</label>
-                            <input ng-model="usuario.telefone">
+                            <input ng-model="usuario.telefone" ui-br-phone-number>
                         </md-input-container>
                     </div>
                     <div ng-if="tipoConta.includes('pessoal')">
                         <md-input-container>
                             <label>CPF</label>
-                            <input ng-model="usuario.cpf">
+                            <input ng-model="usuario.cpf" ui-br-cpf-mask>
                         </md-input-container>
                     </div>
                     <div ng-if="tipoConta.includes('comercial')">
                         <md-input-container>
                             <label>CNPJ</label>
-                            <input ng-model="usuario.cnpj">
+                            <input ng-model="usuario.cnpj" ui-br-cnpj-mask>
                         </md-input-container>
                     </div>
                     <md-button ng-click="cadastrar()" class="md-raised md-primary">Cadastrar</md-button>

@@ -7,13 +7,9 @@ const port = 8081
 
 app.use(cors())
 
-app.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  } console.log(`server is listening on ${port}`)
-})
+app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: false }))
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -22,14 +18,31 @@ var con = mysql.createConnection({
   database: "HELPBOOK"
 });
 
-app.post('/login', function (req, res) {
+app.post('/login', urlencodedParser, function (req, res) {
 
-  console.log("chegou no metodo");
-  var user = req.body.user;
-  console.log(user);
-  res.end("OK");
-  /*
-  var senha = req.body.senha;
-  consoe.log(user+" "+senha)
-  */
+  console.log(req.body);
+  var date  = req.body.dtNascimento.substr(0, 10);
+  if (req.body.cpf != " ") {
+    var sql = `INSERT INTO USUARIO_FISICO (NOME, DT_NASCIMENTO, TELEFONE, CPF, EMAIL, SENHA)
+    VALUES ('${req.body.nome}', '${date}', '${req.body.telefone}', '${req.body.cpf}', '${req.body.email}', '${req.body.senha}')`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record write");
+      res.send("OK");
+    });
+  } else if (req.body.cnpj != " ") {
+    var sql = `INSERT INTO USUARIOS_JURIDICO (NOME, DT_NASCIMENTO, TELEFONE, CNPJ, EMAIL, SENHA)
+    VALUES ('${req.body.nome}', '${date}', '${req.body.telefone}', '${req.body.cnpj}', '${req.body.email}', '${req.body.senha}')`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record write");
+      res.end("OK");
+    });
+  }
+})
+
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  } console.log(`server is listening on ${port}`)
 })
